@@ -14,6 +14,11 @@ export class AppComponent {
   counter: number = 0;
 
   constructor(private ngRedux: NgRedux<IAppState>){
+    var subscription = ngRedux.subscribe(() => {
+      console.log(ngRedux.getState());
+      var store = ngRedux.getState();
+      this.counter = store.counter;
+    });
   }
 
   increment() {
